@@ -45,6 +45,16 @@ $carros = [
         'bateria_kwh' => 60.5,
         'consumo_kwh_km' => 0.160,
         'autonomia_km' => 370,
+
+    ],
+    [
+        'id' => 6,
+        'marca' => 'BYD',
+        'modelo' => 'Dolphin Mini',
+        'versao' => 'GL',
+        'bateria_kwh' => 76.9,
+        'consumo_kwh_km' => 0.180,
+        'autonomia_km' => 500,
     ],
 ];
 
