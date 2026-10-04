@@ -70,25 +70,29 @@ Os dados de distância e postos de recarga são reais, pesquisados manualmente (
 ```
 etrip/
 │
-├── index.php                     Tela 1 — formulário
+├── index.php                     Tela 1 — formulário (marca, modelo, versão, origem,
+│                                destino e % de bateria, tudo gerado via PHP)
 ├── CalculoEnergia.php            Cálculo de energia/bateria + HTML do resultado
+│                               
+│
+├── carrosimg/                    Fotos dos carros (.jpg/.png), usadas no resultado
 │
 ├── css/
 │   └── style.css
 │
 ├── js/
-│   ├── selects.js                Selects em cascata (marca → modelo → versão)
-│   ├── sliders.js                Sliders de % de bateria
-│   └── animacoes.js              Animações e transições visuais
+│   ├── selects.js                Cascata marca → modelo → versão
+│   │                             
+│   └── sliders.js                Mostra o valor do slider em tempo real (%)
 │
 ├── backend/
-│   ├── classes/
+│   ├── classes/                  
 │   │   ├── Carro.php
 │   │   └── PostoRecarga.php
 │   │
-│   └── dados/
-│       ├── dados_carros.php      Dados técnicos dos 5 carros
-│       ├── dados_cidades.php     Cidades do ES + distâncias
+│   └── data/
+│       ├── dados_carros.php      Dados técnicos dos carros 
+│       ├── dados_cidades.php     7 cidades do ES (rota BR-101) + distâncias
 │       └── dados_postos.php      Postos de recarga reais do ES
 │
 └── README.md
