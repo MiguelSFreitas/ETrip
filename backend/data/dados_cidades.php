@@ -27,7 +27,7 @@ $distancias = [
     
     ['origem' => 'Pinheiros',  'destino' => 'Linhares',   'distancia_km' => 00, 'tempo_min' => 00],
     ['origem' => 'Pinheiros',  'destino' => 'Ibiraçu',    'distancia_km' => 00, 'tempo_min' => 00],
-    ['origem' => 'Pinheiros',  'destino' => 'Serra',      'distancia_km' => 00, 'tempo_min' => 00],
+    ['origem' => 'Pinheiros',  'destino' => 'Serra',      'distancia_km' => 260, 'tempo_min' => 267],
     ['origem' => 'Pinheiros',  'destino' => 'Vitória',    'distancia_km' => 280, 'tempo_min' => 300],
     ['origem' => 'Pinheiros',  'destino' => 'Vila Velha', 'distancia_km' => 00, 'tempo_min' => 00],
 
