@@ -192,6 +192,8 @@ $rota = null;
 $resultado = null;
 $postoSugerido = null;
 $paradaIntermediaria = null;
+$postoNaOrigem = null;
+$postoNaOrigem = null;
 $cidadeOrigem = null;
 $cidadeDestino = null;
 
@@ -246,6 +248,12 @@ try {
             $distancias,
             $postos
         );
+
+        // Se nem a primeira cidade no caminho tem posto dentro do alcance,
+        // a saída é recarregar mais ANTES de sair, na própria cidade de origem.
+        if (!$paradaIntermediaria) {
+            $postoNaOrigem = melhorPostoDaCidade($cidadeOrigem, $postos);
+        }
     }
 
 } catch (Exception $e) {
@@ -438,10 +446,37 @@ try {
                         <p class="aviso" style="background:#fff8e1; color:#8a6d00;">
                             Esta é a melhor parada dentro do alcance do carro. Depois de recarregar lá, faça uma nova simulação para o restante do trajeto até <?php echo htmlspecialchars($cidadeDestino); ?>.
                         </p>
+                    <?php elseif ($postoNaOrigem): ?>
+                        <p class="aviso" style="background:#fff8e1; color:#8a6d00;">
+                            Não encontramos nenhuma cidade com posto de recarga dentro do alcance do carro
+                            entre <?php echo htmlspecialchars($cidadeOrigem); ?> e
+                            <?php echo htmlspecialchars($cidadeDestino); ?>. Recarregue mais antes de sair —
+                            há um posto disponível na própria cidade de <?php echo htmlspecialchars($cidadeOrigem); ?>.
+                        </p>
+                        <div class="campos">
+                            <p class="campo">
+                                <label>Posto sugerido (antes de sair)</label>
+                                <?php echo htmlspecialchars($postoNaOrigem['nome']); ?>
+                            </p>
+                            <p class="campo">
+                                <label>Cidade</label>
+                                <?php echo htmlspecialchars($postoNaOrigem['cidade']); ?>
+                            </p>
+                            <p class="campo">
+                                <label>Endereço</label>
+                                <span class="endereco-texto"><?php echo htmlspecialchars($postoNaOrigem['endereco']); ?></span>
+                                <button type="button" class="btn-copiar" data-endereco="<?php echo htmlspecialchars($postoNaOrigem['endereco']); ?>">Copiar endereço</button>
+                            </p>
+                            <p class="campo">
+                                <label>Conector</label>
+                                <?php echo htmlspecialchars($postoNaOrigem['tipo_conector']); ?> — <?php echo $postoNaOrigem['potencia_kw']; ?> kW
+                            </p>
+                        </div>
                     <?php else: ?>
                         <p class="aviso">
                             Não encontramos nenhuma cidade com posto de recarga dentro do alcance do carro entre
-                            <?php echo htmlspecialchars($cidadeOrigem); ?> e <?php echo htmlspecialchars($cidadeDestino); ?>.
+                            <?php echo htmlspecialchars($cidadeOrigem); ?> e <?php echo htmlspecialchars($cidadeDestino); ?>,
+                            nem na própria cidade de origem.
                             Essa viagem não é recomendada com a bateria atual.
                         </p>
                     <?php endif; ?>
