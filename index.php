@@ -18,14 +18,17 @@ require_once __DIR__ . '/backend/data/dados_cidades.php';  // gera $cidades
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>E_TRIP</title>
+    <title>ETRIP</title>
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="shortcut icon" href="/img/etrip-logo-mini.png" type="image/x-icon">
 </head>
 
 <body>
 
     <nav class="menu">
-        <a href="index.php" class="marca">E_TRIP</a>
+        <a href="index.php" class="marca">
+            <img src="/img/etrip-logo-completa.png" alt="ETRIP" class="logo-nav">
+        </a>
         <ul>
             <li><a href="index.php" class="ativo">Início</a></li>
             <li><a href="#viagem">Calcular viagem</a></li>
@@ -36,7 +39,7 @@ require_once __DIR__ . '/backend/data/dados_cidades.php';  // gera $cidades
 
     <header class="hero">
         <div class="hero-texto">
-            <h1>E_TRIP</h1>
+            <img src="/img/etrip-logo-completa.png" alt="ETRIP" class="logo-hero">
             <p>Escolha seu carro elétrico, a rota e a bateria que você tem.
                 A gente calcula se você chega ou se precisa parar para carregar.</p>
             <a href="#viagem" class="hero-botao">Planejar viagem</a>
@@ -166,7 +169,13 @@ require_once __DIR__ . '/backend/data/dados_cidades.php';  // gera $cidades
 
     </main>
 
-    <footer class="rodape">E_TRIP</footer>
+    <footer class="rodape">
+        <img src="/img/etrip-logo-completa.png" alt="ETRIP" class="logo-footer">
+        <p>Copyright &copy; 2026 Etrip.</p>
+   
+        <p class="rodape-texto">
+            
+    </footer>
 
     <!-- Dados completos dos carros, gerados pelo PHP, pro selects.js filtrar
          modelo/versão sem precisar buscar nada separado. -->

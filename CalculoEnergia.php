@@ -273,7 +273,9 @@ try {
 <body>
 
     <nav class="menu">
-        <a href="index.php" class="marca">E_TRIP</a>
+       <a href="index.php" class="marca">
+            <img src="/img/etrip-logo-completa.png" alt="ETRIP" class="logo-nav">
+        </a>
         <ul>
             <li><a href="index.php">Início</a></li>
             <li><a href="index.php#viagem">Nova simulação</a></li>
@@ -502,7 +504,13 @@ try {
 
     </main>
 
-    <footer class="rodape">E_TRIP</footer>
+    <footer class="rodape">
+        <img src="/img/etrip-logo-completa.png" alt="ETRIP" class="logo-footer">
+        <p>Copyright &copy; 2026 Etrip.</p>
+
+        <p class="rodape-texto">
+            
+    </footer>
 
     <script>
         document.querySelectorAll('.btn-copiar').forEach(function (botao) {

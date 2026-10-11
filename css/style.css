@@ -1,4 +1,3 @@
-
 :root {
     --azul: #1e88e5;
     --azul-medio: #1565c0;
@@ -50,11 +49,31 @@ body {
 }
 
 .menu .marca {
-    color: var(--branco);
-    font-size: 22px;
-    font-weight: 800;
-    letter-spacing: .5px;
-    text-decoration: none;
+    display: block;
+    line-height: 0;
+}
+
+/* ===== LOGO (imagem) ===== */
+
+.logo-nav {
+    height: 32px;
+    width: auto;
+    display: block;
+}
+
+.logo-hero {
+    width: 100%;
+    max-width: 180px;
+    height: auto;
+    display: block;
+    margin-bottom: 18px;
+    animation: entrar-esq .9s var(--curva) both;
+}
+
+.logo-footer {
+    height: 24px;
+    width: auto;
+    display: inline-block;
 }
 
 .menu ul {
@@ -113,14 +132,6 @@ body {
 
 .hero-texto {
     max-width: 440px;
-}
-
-.hero h1 {
-    font-size: clamp(48px, 9vw, 84px);
-    line-height: 1;
-    letter-spacing: -1px;
-    margin-bottom: 18px;
-    animation: entrar-esq .9s var(--curva) both;
 }
 
 .hero-texto p {
@@ -518,6 +529,7 @@ button:focus-visible {
     .menu ul { gap: 14px; font-size: 14px; }
     .hero { padding: 130px 20px 150px; gap: 40px; }
     .hero-visual { width: 220px; }
+    .logo-hero { max-width: 140px; }
     .camada { padding: 22px; }
     #rota { margin-left: 0; }
     #bateria { margin-right: 0; }
