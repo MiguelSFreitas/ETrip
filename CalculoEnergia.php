@@ -39,6 +39,23 @@ function calcularCustoEstimado($energiaNecessariaKwh, $tarifaReaisKwh) {
     return round($energiaNecessariaKwh * $tarifaReaisKwh, 2);
 }
 
+/**
+ * Salva um registro no histórico de simulações (historico.json), sem
+ * precisar de login. Mantém só as últimas $limite simulações, mais
+ * recente primeiro.
+ */
+function salvarHistorico($registro, $limite = 20) {
+    $arquivo = __DIR__ . '/historico.json';
+    $historico = file_exists($arquivo) ? json_decode(file_get_contents($arquivo), true) : [];
+    if (!is_array($historico)) {
+        $historico = [];
+    }
+    $registro['id'] = uniqid('sim_', true); // id único, usado pra poder apagar o item depois
+    array_unshift($historico, $registro);
+    $historico = array_slice($historico, 0, $limite);
+    file_put_contents($arquivo, json_encode($historico, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+}
+
 function calcularTempoRecargaMinutos($energiaFaltanteKwh, $potenciaCarregadorKw) {
     if ($potenciaCarregadorKw <= 0) {
         return 0;
@@ -256,6 +273,16 @@ try {
         }
     }
 
+    salvarHistorico([
+        'carro' => $carro['marca'] . ' ' . $carro['modelo'] . ' ' . $carro['versao'],
+        'imagem' => $carro['caminho_imagem'] ?? '',
+        'origem' => $cidadeOrigem,
+        'destino' => $cidadeDestino,
+        'distancia_km' => $rota['distancia_km'],
+        'situacao' => $resultado['situacao'],
+        'data_hora' => date('d/m/Y H:i'),
+    ]);
+
 } catch (Exception $e) {
     $erro = $e->getMessage();
 }
@@ -273,7 +300,7 @@ try {
 <body>
 
     <nav class="menu">
-       <a href="index.php" class="marca">
+        <a href="index.php" class="marca">
             <img src="/img/etrip-logo-completa.png" alt="ETRIP" class="logo-nav">
         </a>
         <ul>
@@ -504,13 +531,7 @@ try {
 
     </main>
 
-    <footer class="rodape">
-        <img src="/img/etrip-logo-completa.png" alt="ETRIP" class="logo-footer">
-        <p>Copyright &copy; 2026 Etrip.</p>
-
-        <p class="rodape-texto">
-            
-    </footer>
+    <footer class="rodape">E_TRIP</footer>
 
     <script>
         document.querySelectorAll('.btn-copiar').forEach(function (botao) {

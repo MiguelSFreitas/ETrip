@@ -20,7 +20,13 @@ require_once __DIR__ . '/backend/data/dados_cidades.php';  // gera $cidades
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>ETRIP</title>
     <link rel="stylesheet" href="/css/style.css">
-    <link rel="shortcut icon" href="/img/etrip-logo-mini.png" type="image/x-icon">
+    <script>
+        // Aplica o tema salvo ANTES da página desenhar, pra evitar o "flash"
+        // de tela clara aparecendo por um instante antes do escuro carregar.
+        if (localStorage.getItem('etrip-tema') === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
 </head>
 
 <body>
@@ -32,9 +38,10 @@ require_once __DIR__ . '/backend/data/dados_cidades.php';  // gera $cidades
         <ul>
             <li><a href="index.php" class="ativo">Início</a></li>
             <li><a href="#viagem">Calcular viagem</a></li>
-            <li><a href="#">Como funciona</a></li>
+            <li><a href="historico.php">Histórico</a></li>
             <li><a href="#">Contato</a></li>
         </ul>
+        <button type="button" id="toggle-tema" class="botao-tema" aria-label="Alternar modo escuro" title="Alternar modo escuro">🌙</button>
     </nav>
 
     <header class="hero">
@@ -164,17 +171,13 @@ require_once __DIR__ . '/backend/data/dados_cidades.php';  // gera $cidades
         </section>
 
         <div class="acao">
-            <button type="submit" form="formulario">Calcular viagem</button>
+            <button type="submit" form="formulario" id="btn-calcular">Calcular viagem</button>
         </div>
 
     </main>
 
     <footer class="rodape">
         <img src="/img/etrip-logo-completa.png" alt="ETRIP" class="logo-footer">
-        <p>Copyright &copy; 2026 Etrip.</p>
-   
-        <p class="rodape-texto">
-            
     </footer>
 
     <!-- Dados completos dos carros, gerados pelo PHP, pro selects.js filtrar
@@ -185,6 +188,7 @@ require_once __DIR__ . '/backend/data/dados_cidades.php';  // gera $cidades
 
     <script src="/js/selects.js"></script>
     <script src="/js/sliders.js"></script>
+    <script src="/js/tema.js"></script>
     <script>
         document.querySelectorAll('input[type="range"]').forEach(function(r) {
             var pintar = function() {
@@ -192,6 +196,17 @@ require_once __DIR__ . '/backend/data/dados_cidades.php';  // gera $cidades
             };
             r.addEventListener('input', pintar);
             pintar();
+        });
+    </script>
+
+    <script>
+        // Mostra "Calculando..." no botão assim que o formulário é enviado.
+        // Como o PHP recarrega a página pra mostrar o resultado, isso evita
+        // a sensação de que o site travou durante o pequeno delay.
+        document.getElementById('formulario').addEventListener('submit', function () {
+            const botao = document.getElementById('btn-calcular');
+            botao.disabled = true;
+            botao.textContent = 'Calculando...';
         });
     </script>
 
