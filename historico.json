@@ -1,0 +1,12 @@
+[
+    {
+        "carro": "BYD Yuan Pro Padrão",
+        "imagem": "carrosimg\/byd-yuan-pro.png",
+        "origem": "Pinheiros",
+        "destino": "Vitória",
+        "distancia_km": 291,
+        "situacao": "precisa_parar",
+        "data_hora": "13\/10\/2026 22:45",
+        "id": "sim_6aceb486113757.11611513"
+    }
+]

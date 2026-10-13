@@ -66,7 +66,7 @@ require_once __DIR__ . '/backend/data/dados_cidades.php';  // gera $cidades
 
     <main class="camadas" id="viagem">
 
-        <form method="post" action="CalculoEnergia.php" id="formulario"></form>
+        <form method="post" action="Resultado.php" id="formulario"></form>
 
         <section class="camada" id="veiculo">
             <header class="camada-topo">
@@ -106,7 +106,7 @@ require_once __DIR__ . '/backend/data/dados_cidades.php';  // gera $cidades
             </div>
 
             <!-- Preenchido pelo selects.js assim que a versão for escolhida.
-                 É o único campo de carro que o CalculoEnergia.php realmente usa. -->
+                 É o único campo de carro que o Resultado.php realmente usa. -->
             <input type="hidden" name="carro_id" id="carro_id" form="formulario" required>
         </section>
 
