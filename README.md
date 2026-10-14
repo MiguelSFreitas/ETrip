@@ -175,12 +175,6 @@ Postos reais cadastrados, pesquisados manualmente no Open Charge Map, cobrindo t
 
 ---
 
-## Material de divulgação
-
-Comercial em estilo "carro 0km" (dinâmico, com trilha forte), roteirizado em `roteiro-comercial-etrip.md`, incluindo cenas com os carros reais e cenas geradas por IA (prompts detalhados para cada uma). Perfil no Instagram planejado para documentar o desenvolvimento e divulgar o comercial finalizado.
-
----
-
 ## Observações para manutenção
 
 - Os valores de distância em `CidadeModel.php` são estimativas; recomenda-se conferência periódica no Google Maps.
